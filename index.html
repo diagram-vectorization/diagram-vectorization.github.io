@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>EIDA</title>
+    <style>
+        /* General styles */
+        .code,
+        code {
+            /* background: rgba(135, 131, 120, 0.15); */
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 85%;
+            tab-size: 2;
+        }
+
+        .code {
+            padding: 1.5em 1em;
+        }
+
+        .code-wrap {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background-color: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            margin: 10px 5px !important;
+            padding: 10px;
+
+            /* Adjusted from 5-px */
+        }
+
+        /* 
+        .header-bkg {
+            background-image: url('eida_background.png');
+            background-size: cover;
+            background-position: top center;
+            color: white;
+            padding: 100px;
+        } */
+
+        header {
+            text-align: center;
+            color: #333;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        /* Center authors */
+        .authors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .content {
+            display: flex;
+            /* flex-direction: row; */
+            justify-content: space-between;
+        }
+
+        /* Center affiliations */
+        .affiliations {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .conference {
+            text-align: center;
+        }
+
+        /* Center icon links */
+        .icon-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 900px;
+            /* Adjusted for reduced width */
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            /* Added background color */
+        }
+
+        .imgcontainer {
+            width: 90%;
+            /* Adjust as needed */
+            margin: auto;
+        }
+
+        .container h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Image styles */
+        .img-with-text {
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Icon styles */
+        .icon {
+            width: 80px;
+            /* Adjusted icon size */
+            height: 80px;
+            /* Adjusted icon size */
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .right-aligned-image {
+            margin-left: auto;
+            /* Pushes the image to the right */
+            align-self: flex-start;
+            /* Aligns the image with the top of the container */
+            margin-top: 0;
+            /* Adjust the top margin as needed */
+        }
+
+        .right-aligned-image img {
+            max-width: 300px;
+            /* Adjust the maximum width as needed */
+            height: auto;
+        }
+
+        /* Link styles */
+        .icon-links a {
+            display: inline-block;
+            margin: 0 20px;
+            /* Adjusted margin */
+            color: #333;
+            text-decoration: none;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .icon-links a:hover img {
+            filter: brightness(70%);
+        }
+
+        h1 {
+            font-size: 2rem;
+            /* Adjusted font size */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .icon-label {
+            margin-top: 5px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .References p ul li {
+            font-size: 0.8rem;
+        }
+
+        .teaser-image img {
+            display: block;
+            margin: 0 auto;
+            /* Centered image */
+            max-width: 100%;
+            /* Ensure image doesn't overflow container */
+            height: auto;
+        }
+
+        .centered-image {
+            text-align: center;
+        }
+
+        .centered-image img {
+            margin: 0 auto;
+            /* Centered image */
+            max-width: 90%;
+            /* Adjusted width */
+            height: auto;
+        }
+
+        .logo-image {
+            text-align: center;
+        }
+
+        .logo-image img {
+            margin: 0 auto;
+            /* Centered image */
+            max-width: 90%;
+            /* Adjusted width */
+            height: 6;
+        }
+
+        .conference-image img {
+            margin: 0 auto;
+            /* Centered image */
+            width: 100px;
+            /* Adjusted width */
+            height: auto;
+        }
+
+        .abstract {
+            max-width: 800px;
+            /* Adjust width as needed */
+            margin: 0 auto;
+            /* Center horizontally */
+            padding: 20px;
+            /* Add some padding */
+            text-align: justify;
+            /* Justify text */
+        }
+
+        .abstract h2 {
+            text-align: center;
+            /* Center the heading */
+            font-size: 1.5rem;
+            /* Adjust heading size */
+            margin-bottom: 20px;
+            /* Add some space below the heading */
+        }
+
+
+
+        .para p {
+            max-width: 100%;
+            /* Ensure paragraph doesn't overflow */
+            line-height: 1.6;
+            /* Adjust line height for better readability */
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            display: table;
+        }
+
+        .column {
+            float: left;
+            width: 24%;
+            padding: 2px;
+        }
+
+        .image-pair {
+            flex: 1;
+            margin-bottom: 2px;
+            /* Adjust margin between image pairs */
+        }
+
+        .image-pair img {
+            max-width: 100%;
+            /* Ensure images don't exceed container width */
+            height: auto;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <!-- <div class="header-bkg"> -->
+
+    <!-- </div> -->
+    <!-- <header>
+        
+    </header> -->
+    <div class="container">
+        <h1>Historical Astronomical Diagrams <br>
+            Decomposition in Geometric Primitives</h1>
+        <!-- <div class="conference">
+            <p>IAMAHA 2023</p>
+            <figure class="conference-image">
+                <img src="logo_iamaha.png" alt="Description of image">
+            </figure>
+        </div> -->
+
+        <div class="authors">
+            <p>Syrine Kalleli<sup>1</sup>, Scott Trigg<sup>2</sup>, S&eacute;gol&egrave;ne Albouy<sup>2</sup>, Matthieu
+                Husson<sup>2</sup>, Mathieu Aubry<sup>1</sup> </p>
+        </div>
+        <div class="affiliations">
+
+            <sup>1</sup>LIGM, Ecole des Ponts, Univ Gustave Eiffel, CNRS, Marne-la-Vall&eacute;e, France<br>
+            <sup>2</sup>SYRTE, Observatoire de Paris-PSL, CNRS, Paris, France<br>
+        </div>
+
+        <div class="icon-links">
+            <a href="https://drive.google.com/file/d/121rmBN7hXNlTPHvXMlb34U58HFMIENZZ/view?usp=sharing"
+                target="_blank">
+                <div class="center-content">
+
+                    <div class="img-wrapper">
+                        <!-- <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true" focusable="false"
+                            data-prefix="fas" data-icon="file-pdf" role="img" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 384 512" data-fa-i2svg=""></svg> -->
+                        <img src="pdf-mark.png" , height="40px" , alt="PDF">
+                    </div>
+                    <p><b>Paper </b></p>
+                </div>
+
+            </a>
+            <a href="https://github.com/vayvi/HDV" target="_blank">
+                <div class="center-content">
+                    <div class="img-wrapper">
+                        <img src="github-mark.png" , height="40px" , alt="GitHub">
+                    </div>
+                    <p><b>Code</b></p>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1W3SdaGah2l8QIxPcQt4i3s446NAzPx4J?usp=sharing"
+                target="_blank">
+                <div class="center-content">
+                    <div class="img-wrapper">
+                        <img src="dataset-logo.jpg" , height="40px" , alt="Dataset">
+                    </div>
+                    <p><b>Dataset</b></p>
+                </div>
+
+            </a>
+            <a href="https://eida.hypotheses.org/" target="_blank">
+                <div class="center-content">
+                    <div class="img-wrapper">
+                        <img src="eida-mark.png" , height="40px" , alt="Eida Webpage">
+                    </div>
+                    <p><b> EIDA </b></p>
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="Teaser">
+            <div class="para">
+                <figure class="centered-image">
+                    <img src="teaser.png" alt="Description of image">
+                    <figcaption>Figure 1: Task. We perform historical astronomical diagram vectorization by predicting
+                        simple geometric primitives, such as lines, circles, and arcs, through a
+                        transformer encoder-decoder model. Our modified decoder queries, which we refer to as a
+                        primitive queries, are associated to different geometric primitives.</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="abstract">
+            <h2>Abstract</h2>
+            <div class="para">
+                <p>
+                    Automatically extracting the geometric content from the
+                    hundreds of thousands of diagrams drawn in historical manuscripts would
+                    enable historians to study the diffusion of astronomical knowledge on a
+                    global scale. However, state-of-the-art vectorization methods, often designed to tackle modern data,
+                    are not adapted to the complexity and
+                    diversity of historical astronomical diagrams. Our contribution is thus
+                    twofold. First, we introduce a unique dataset of 303 astronomical diagrams from diverse traditions,
+                    ranging from the XIIth to the XVIIIth century, annotated with more than 3000 line segments, circles
+                    and
+                    arcs. Second, we develop a model that builds on DINO-DETR to enable the prediction of multiple
+                    geometric primitives. We show that it
+                    can be trained solely on synthetic data and accurately predict primitives on our challenging
+                    dataset. Our approach widely improves over the
+                    LETR baseline, which is restricted to lines, by introducing a meaningful
+                    parametrization for multiple primitives, jointly training for detection and
+                    parameter refinement, using deformable attention and training on rich
+                    synthetic data.
+                </p>
+            </div>
+        </div>
+        <div class="Method"
+            style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+            <h2>Method</h2>
+            <div class="para">
+                <p>
+                    Given an input image of a diagram, our goal is to output the set of primitives shapes present in the
+                    input together with their parameters. We focus on three primitive classes, Line, Circle, and Arc,
+                    but our model could be extended to more classes. To solve this image-to-set problem, we use the
+                    transformer
+                    encoder-decoder architecture outlined in Figure 2.
+                <figure class="centered-image">
+                    <img src="architecture_figure.png" alt="Description of image">
+                </figure>
+                Given an input image, the backbone extracts multi-scale
+                features which are fed to the Transformer encoder along with a positional encoding. The
+                primitive queries, composed of content (filled) and modified positional (empty) queries, go
+                through the Transformer decoder where they probe the enhanced encoder features through
+                deformable cross-attention. Queries are refined layer-by-layer in the decoder, to finally
+                predict the primitive class, bounding box and parameters.
+                </p>
+            </div>
+        </div>
+        <div class="Our Dataset"
+            style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+            <h2>Our Dataset</h2>
+            <div class="content">
+                <div class="para">
+                    <figure class="centered-image">
+                        <img src="dataset_sample.drawio.png" alt="Description of image">
+                    </figure>
+                    <p>Our team of historians has curated a dataset of 303 diagrams so that it spanned diverse relevant
+                        traditions for the history of astronomy, namely Arabic, Latin, Hebrew, Byzantine, Sanskrit,
+                        Chinese, and Greek sources.
+                        This dataset includes diagrams from 27 distinct documents from the 12th to the 18th century,
+                        most of them manuscripts as well as a few Chinese woodblock prints (which were common in ancient
+                        China). This ensures a broad diversity of content, representations, scripts, styles, materials,
+                        digitization quality, and conservation state. These diagrams were annotated by the historians
+                        with circles, arcs and line segments relevant for their analysis, which resulted in a total of
+                        3076 annotated primitives.</p>
+                </div>
+            </div>
+            <!-- <div class="Dataset"
+                style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                <h2>Training Data</h2>
+                <div class="content">
+
+                    <div class="para">
+                        <p>Because annotating geometric primitives in complex examples is very time consuming, we train
+                            our
+                            models relying solely on dynamically generated synthetic examples.<br>
+                            To generate an example, we first randomly sample a background randomly and add floating
+                            words,
+                            random numbers and glyphs in different fonts.
+                            We then generate a diagram by generating line segments, circles and arcs. These primitives
+                            are
+                            drawn with random opacity variation, random width and colors on
+                            the backgrounds. Circles can be filled or hollow.
+                            Finally, we add Gaussian blur, structured noise though randomly generated shapes, random
+                            resizing, and we chip small regions of the final diagram in order to simulate historical
+                            document degradation. <br>
+                            While our synthetic samples
+                            are not realistic, they are challenging
+                            enough for the network to generalize to real diagrams.</p>
+                    </div>
+                    <figure class="right-aligned-image">
+                        <img src="synthetic_sample.png" alt="Description of image">
+                    </figure>
+                </div>
+            </div> -->
+
+            <div class="Results"
+                style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                <h2>Qualitative Results</h2>
+                <div class="imgcontainer">
+
+                    <div class="row">
+                        <div class="column">
+                            <img src="results/ms154_0140_680,1346,2455,3106_image.jpg" alt="Image 1"
+                                style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms154_0140_680,1346,2455,3106.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms108_0010_471,1136,679,984_image.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms108_0010_471,1136,679,984.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="column">
+                            <img src="results/ms145_0056_554,1309,1278,1357_image.jpg" alt="Image 1"
+                                style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms145_0056_554,1309,1278,1357.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+
+                        <div class="column">
+                            <img src="results/ms138_0039_223,760,1002,1085_image.jpg" alt="Image 1" style="width:95%; ">
+
+                        </div>
+                        <div class="column">
+                            <img src="results/ms138_0039_223,760,1002,1085.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <img src="results/ms13_0027_189,206,497,508_image.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms13_0027_189,206,497,508.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+
+
+                        <div class="column">
+                            <img src="results/ms155_0038_54,1037,1398,1368_image.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms155_0038_54,1037,1398,1368.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="column">
+                            <img src="results/ms31_0091_88,933,412,411_image.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                        <div class="column">
+                            <img src="results/ms31_0091_88,933,412,411.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+
+                        <div class="column">
+                            <img src="results/ms31_0092_936,2069,389,377_image.jpg" alt="Image 1" style="width:95%; ">
+
+                        </div>
+                        <div class="column">
+                            <img src="results/ms31_0092_936,2069,389,377.jpg" alt="Image 1" style="width:95%; ">
+                        </div>
+                    </div>
+                </div>
+                <div class="acknowledgements"
+                    style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+                    <h2>Acknowledgements</h2>
+                    <div class="para">
+                        <p>
+                            This work was funded by ANR (project EIDA ANR-22-CE38-0014). The work of S.
+                            Trigg is supported by the European Research Council (ERC project NORIA, grant
+                            724175). M. Aubry and S. Kalleli are supported by ERC project DISCOVER funded by
+                            the European Union’s Horizon Europe Research and Innovation program under grant
+                            agreement No. 101076028. We thank Ji Chen, Samuel Guessner, Divna Manolova, and
+                            Jade Norindr for their help in collecting and annotating the dataset, and Sonat
+                            Balta&#231;i,
+                            Rapha&#xEB;l Baena, Yannis Siglidis, Elliot Vincent, and Malamatenia Vlachou for feedback
+                            and fruitful discussions.
+
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a name="bibtex" style="text-decoration: none">
+                        <h3 id="903f5fbf-0f20-4992-bc88-d9414432f12e" class="">
+                            <center>BibTeX</center>
+                        </h3>
+                    </a>
+                    <p id="70cec4ec-8d5a-43c7-9f2d-08a1692ffd60" class=""></p>
+                    <hr id="49e36dc2-6a24-4958-bdaa-be5ac1d1dd73" />
+                    <pre id="94ab0526-ea62-4775-b1f6-c3c19cbbecf4" class="code"><code>
+                    @misc{kalleli2024historical,
+                    title={Historical Astronomical Diagrams Decomposition in Geometric Primitives},
+                    author={Syrine Kalleli and Scott Trigg and Ségolène Albouy and Mathieu Husson and Mathieu Aubry},
+                    year={2024},
+                    eprint={2403.08721},
+                    archivePrefix={arXiv},
+                    primaryClass={cs.CV}}
+                        </code>
+                    </pre>
+                </div>
+
+
+
+</body>
+
+</html>
